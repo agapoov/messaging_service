@@ -29,6 +29,7 @@ urlpatterns = [
     # project urls
     path('admin/', admin.site.urls),
     path('api/v1/users/', include('users.urls'), name='users'),
+    path('api/v1/mailing/', include('mailing.urls'), name='mailing'),
 
     # jwt auth
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
