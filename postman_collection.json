@@ -5,7 +5,7 @@
   },
   "item": [
     {
-      "name": "Аутентификация",
+      "name": "Аутентификация (опционально)",
       "item": [
         {
           "name": "Регистрация",
@@ -67,13 +67,7 @@
           "name": "Получить список клиентов",
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/v1/clients/",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              }
-            ]
+            "url": "{{base_url}}/api/v1/clients/"
           }
         },
         {
@@ -82,10 +76,6 @@
             "method": "POST",
             "url": "{{base_url}}/api/v1/clients/",
             "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              },
               {
                 "key": "Content-Type",
                 "value": "application/json"
@@ -101,13 +91,7 @@
           "name": "Получить клиента по ID",
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/v1/clients/1/",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              }
-            ]
+            "url": "{{base_url}}/api/v1/clients/1/"
           }
         },
         {
@@ -116,10 +100,6 @@
             "method": "PUT",
             "url": "{{base_url}}/api/v1/clients/1/",
             "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              },
               {
                 "key": "Content-Type",
                 "value": "application/json"
@@ -135,13 +115,7 @@
           "name": "Удалить клиента",
           "request": {
             "method": "DELETE",
-            "url": "{{base_url}}/api/v1/clients/1/",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              }
-            ]
+            "url": "{{base_url}}/api/v1/clients/1/"
           }
         }
       ]
@@ -155,10 +129,6 @@
             "method": "POST",
             "url": "{{base_url}}/api/v1/mailing/create/",
             "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              },
               {
                 "key": "Content-Type",
                 "value": "application/json"
@@ -174,26 +144,14 @@
           "name": "Получить список рассылок",
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/v1/mailing/",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              }
-            ]
+            "url": "{{base_url}}/api/v1/mailing/"
           }
         },
         {
           "name": "Получить рассылку по ID",
           "request": {
             "method": "GET",
-            "url": "{{base_url}}/api/v1/mailing/1/",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{access_token}}"
-              }
-            ]
+            "url": "{{base_url}}/api/v1/mailing/1/"
           }
         }
       ]
@@ -203,10 +161,6 @@
     {
       "key": "base_url",
       "value": "http://localhost:8000"
-    },
-    {
-      "key": "access_token",
-      "value": "your_access_token_here"
     }
   ]
 }
