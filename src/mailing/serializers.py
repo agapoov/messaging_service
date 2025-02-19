@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Mailing, Client
+from .models import Client, Mailing
 
 
 class MailingSerializer(serializers.ModelSerializer):

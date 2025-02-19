@@ -1,8 +1,8 @@
 from django.utils import timezone
 from rest_framework import generics, viewsets
 
-from .models import Mailing, Client
-from .serializers import MailingSerializer, ClientSerializer
+from .models import Client, Mailing
+from .serializers import ClientSerializer, MailingSerializer
 from .tasks import sending_processing
 
 

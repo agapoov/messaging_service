@@ -12,6 +12,7 @@ def send_message(client_id: int, mailing_id: int):
 
     if timezone.now() > mailing.end_time:
         print(f'Mailing {mailing_id} expired')
+        return
 
     message = Message.objects.create(
         client=client,

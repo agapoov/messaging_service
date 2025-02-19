@@ -1,0 +1,212 @@
+{
+  "info": {
+    "name": "Messaging Service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Аутентификация",
+      "item": [
+        {
+          "name": "Регистрация",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/users/register/",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"testpass123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Получить токены",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/token/",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"testpass123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Обновить токен",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/token/refresh/",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"refresh\": \"your_refresh_token_here\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Клиенты",
+      "item": [
+        {
+          "name": "Получить список клиентов",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/v1/clients/",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Создать клиента",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/clients/",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"phone_number\": \"79991234567\",\n    \"tag\": \"vip\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Получить клиента по ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/v1/clients/1/",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Обновить клиента",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/api/v1/clients/1/",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"phone_number\": \"79991234567\",\n    \"tag\": \"premium\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Удалить клиента",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/api/v1/clients/1/",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Рассылки",
+      "item": [
+        {
+          "name": "Создать рассылку",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/v1/mailing/",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"start_time\": \"2024-03-20T12:00:00Z\",\n    \"end_time\": \"2024-03-21T12:00:00Z\",\n    \"message_text\": \"Тестовое сообщение\",\n    \"filter_params\": {\n        \"tag\": \"vip\",\n        \"operator_code\": \"999\"\n    }\n}"
+            }
+          }
+        },
+        {
+          "name": "Получить список рассылок",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/v1/mailing/",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Получить рассылку по ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/v1/mailing/1/",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "access_token",
+      "value": "your_access_token_here"
+    }
+  ]
+}
