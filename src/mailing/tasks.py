@@ -27,6 +27,7 @@ def send_message(client_id: int, mailing_id: int):
     {'*'*50}
     """)
 
+
 @shared_task
 def sending_processing(mailing_id: int):
     mailing = Mailing.objects.get(id=mailing_id)

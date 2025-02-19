@@ -1,8 +1,8 @@
 from django.utils import timezone
-from rest_framework import generics
+from rest_framework import generics, viewsets
 
-from .models import Mailing
-from .serializers import MailingSerializer
+from .models import Mailing, Client
+from .serializers import MailingSerializer, ClientSerializer
 from .tasks import sending_processing
 
 
@@ -29,3 +29,7 @@ class MailingDetailView(generics.RetrieveAPIView):
     queryset = Mailing.objects.all()
     serializer_class = MailingSerializer
 
+
+class ClientViewSet(viewsets.ModelViewSet):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer

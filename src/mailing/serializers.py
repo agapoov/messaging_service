@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Mailing
+from .models import Mailing, Client
 
 
 class MailingSerializer(serializers.ModelSerializer):
@@ -19,3 +19,9 @@ class MailingSerializer(serializers.ModelSerializer):
                 if input_filter not in allowed_filters:
                     raise serializers.ValidationError(f'Invalid filtering parameter: {input_filter}')
         return attrs
+
+
+class ClientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Client
+        fields = ('phone_number', 'tag')

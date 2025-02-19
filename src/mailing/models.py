@@ -20,6 +20,9 @@ class Client(models.Model):
             self.operator_code = self.phone_number[1:4]
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return f'Клиент {self.phone_number}'
+
 
 class Mailing(models.Model):
     start_time = models.DateTimeField()
@@ -35,3 +38,6 @@ class Message(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     mailing = models.ForeignKey(Mailing, on_delete=models.CASCADE, related_name='messages')
     client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='messages')
+
+    def __str__(self):
+        return f'Сообщение для {self.client}'
