@@ -1,4 +1,4 @@
-# Notification Service API
+# Messaging Service API
 
 ## Stack
 
