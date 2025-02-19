@@ -32,6 +32,7 @@ INSTALLED_APPS = [
 
     # project apps
     'users',
+    'mailing',
 
 ]
 
