@@ -9,11 +9,18 @@ class MailingSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def validate(self, attrs):
-        allowed_filters = ['tag', 'operator_code']
         if attrs['end_time'] <= attrs['start_time']:
             raise serializers.ValidationError('The start date exceeds the end date')
+        
+        if attrs['start_time'] == attrs['end_time']:
+            raise serializers.ValidationError('The start date and end date cannot be the same')
 
+        allowed_filters = ['tag', 'operator_code']
         filters = attrs.get('filter_params', {})
+
+        if not filters:
+            raise serializers.ValidationError('At least one filter parameter (tag or operator_code) must be specified')
+
         if filters:
             for input_filter in filters:
                 if input_filter not in allowed_filters:
