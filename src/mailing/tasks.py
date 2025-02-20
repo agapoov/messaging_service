@@ -1,6 +1,5 @@
-from django.utils import timezone
-
 from celery import shared_task
+from django.utils import timezone
 
 from .models import Client, Mailing, Message
 
@@ -46,9 +45,10 @@ def sending_processing(mailing_id: int):
     #     filters['tag'] = filter_tag
     filters = {}
     if mailing.filter_params.get('operator_code'):
-        filters['operator_code'] = mailing.filter_params['operator_code']
+        filters['operator_code'] = mailing.filter_params.get('operator_code')
     if mailing.filter_params.get('tag'):
-        filters['tag'] = mailing.filter_params['tag']
+        filters['tag'] = mailing.filter_params.get('tag')
+
 
     clients = Client.objects.filter(**filters)
 
